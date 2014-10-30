@@ -1,5 +1,5 @@
 
-package br.ifsul.edu.converters;
+package br.ifsul.edu.controle;
 
 import br.ifsul.edu.dao.EstadoDAO;
 import br.ifsul.edu.modelo.Estado;
