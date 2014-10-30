@@ -15,7 +15,7 @@ import javax.persistence.PersistenceContext;
 public class GenericDAO<T> implements Serializable {
 
     private Class persistentClass;
-    @PersistenceContext(unitName = "EducacionalEJB6N1PU")
+    @PersistenceContext(unitName = "TATrab2PU")
     private EntityManager em;
     private String filter = "";
     private String customFilter;
