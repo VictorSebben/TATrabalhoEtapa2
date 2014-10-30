@@ -84,5 +84,9 @@ public class Marca implements Serializable {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Marca{" + "id=" + id + ", nome=" + nome + '}';
+    }
 
 }
