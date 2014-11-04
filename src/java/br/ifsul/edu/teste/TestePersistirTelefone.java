@@ -2,29 +2,15 @@ package br.ifsul.edu.teste;
 
 import br.ifsul.edu.modelo.Pessoa;
 import br.ifsul.edu.modelo.Telefone;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class TestePersistirPessoa {
+public class TestePersistirTelefone {
     public static void main(String[] args) {
-        Pessoa obj = new Pessoa();
-        obj.setNome("Beltrano de Tal");
-        obj.setEndereco("Endereço");
-        obj.setEmail("beltrano@example.com");
-        obj.setBairro("Bairro");
-        obj.setCep("01234-567");
-        obj.setComplemento("");
+        Telefone obj = new Telefone();
+        obj.setNumero("(54) 9876-5432");
         
-        Telefone tel1 = new Telefone();
-        tel1.setNumero("(54) 9876-5432");
-        obj.adicionarTelefone(tel1);
-        
-        Telefone tel2 = new Telefone();
-        tel2.setNumero("(54) 2345-6789");
-        obj.adicionarTelefone(tel2);
         
         EntityManagerFactory emf =
                 Persistence.createEntityManagerFactory("TATrab2PULocal");
