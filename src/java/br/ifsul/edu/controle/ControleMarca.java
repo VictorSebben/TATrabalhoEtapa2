@@ -3,6 +3,7 @@ package br.ifsul.edu.controle;
 import br.ifsul.edu.dao.MarcaDAO;
 import br.ifsul.edu.modelo.Marca;
 import br.ifsul.edu.util.Util;
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -13,7 +14,7 @@ import javax.faces.bean.SessionScoped;
  */
 @ManagedBean(name = "controleMarca")
 @SessionScoped
-public class ControleMarca {
+public class ControleMarca implements Serializable {
     @EJB
     private MarcaDAO<Marca> dao;
     private Marca objeto;

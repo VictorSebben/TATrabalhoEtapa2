@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <ui:composition template="/templates/template.xhtml">
+        <ui:define name="titulo">Listagem de Marcas</ui:define>
+        <ui:define name="conteudo">
+            <h:form id="formListagem">
+                <p:growl/>
+                <div align="center">
+                    <p:panelGrid columns="1">
+                        <f:facet name="header">
+                            Filtro Ordenação e Paginação
+                        </f:facet>
+                        <p:column  colspan="13" rowspan="1">
+                            <p:commandButton actionListener="#{controleMarca.novo()}"
+                                             value="Nova Marca" oncomplete="PF('dlg').show();"
+                                             update=":formEdicao" icon="ui-icon-plus"/>
+                            <h:outputLabel for="ordem" value="Ordem" />
+                            <h:selectOneMenu id="ordem"
+                                             value="#{controleMarca.dao.currentOrder}"
+                                             converter="#{controleMarca.dao.converterOrder}">
+                                <f:selectItems value="#{controleMarca.dao.listOrder}" />
+                                <p:ajax update="formListagem"
+                                        listener="#{controleMarca.listar()}"/>
+                            </h:selectOneMenu>
+                            <h:outputLabel for="maximoObjetos" value="Máximo de objetos" />
+                            <p:inputText id="maximoObjetos"
+                                         value="#{controleMarca.dao.maxObjects}" size="2"
+                                         onkeydown="Mascara(this, Integer);"
+                                         onkeypress="Mascara(this, Integer);"
+                                         onkeyup="Mascara(this, Integer);">
+                                <p:ajax update="tabela"
+                                        listener="#{controleMarca.listar()}" event="keyup"/>
+                            </p:inputText>
+                            <h:outputLabel for="filtro" value="Filtro" />
+                            <p:inputText id="filtro" placeholder="Digite o filtro"
+                                         value="#{controleMarca.dao.filter}" >
+                                <p:ajax update="tabela"
+                                        listener="#{controleMarca.listar()}" event="keyup"/>
+                            </p:inputText>
+                            <p:commandButton id="btnFiltrar" update="formListagem"
+                                             actionListener="#{controleMarca.listar()}" icon="ui-icon-search" />
+                            <p:commandButton id="btnPrimeiro" update="formListagem"
+                                             actionListener="#{controleMarca.dao.first()}" icon="ui-icon-seek-start"/>
+                            <p:commandButton id="btnAnterior" update="formListagem"
+                                             actionListener="#{controleMarca.dao.previous()}" icon="ui-icon-seek-prev"/>
+                            <p:commandButton  id="btnProximo" update="formListagem"
+                                              actionListener="#{controleMarca.dao.next()}" icon="ui-icon-seek-next"/>
+                            <p:commandButton id="btnUltimo" update="formListagem"
+                                             actionListener="#{controleMarca.dao.last()}" icon="ui-icon-seek-end" />
+                        </p:column>
+                    </p:panelGrid>
+                </div>
+
+                <p:dataTable value="#{controleMarca.dao.listObjects}" var="obj" id="tabela">
+                    <f:facet name="header">Listagem de Marcas</f:facet>
+                    <f:facet name="footer">
+                        <h:outputLabel value="#{controleMarca.dao.navigationMessage}" />
+                    </f:facet>
+                    <p:column headerText="ID">
+                        <p:outputLabel value="#{obj.id}"/>
+                    </p:column>
+                    <p:column headerText="Nome">
+                        <p:outputLabel value="#{obj.nome}"/>
+                    </p:column>
+                    <p:column headerText="Ações">
+                        <div align="center">
+                            <p:commandButton
+                                actionListener="#{controleMarca.editar(obj.id)}"
+                                oncomplete="PF('dlg').show();" update=":formEdicao"
+                                icon="ui-icon-pencil"
+                                id="btnEditar"/>
+                            <p:tooltip for="btnEditar"  value="Editar" />
+                            <p:commandButton
+                                actionListener="#{controleMarca.remover(obj.id)}"
+                                update=":formListagem"
+                                onclick="if (!confirm('Confirma a exclusão da marca #{obj.id}?'))
+                                            return false"
+                                icon="ui-icon-trash"
+                                id="btnExcluir"/>
+                            <p:tooltip for="btnExcluir"  value="Excluir" />
+                        </div>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+
+        </ui:define>
+        <ui:define name="dialogos">
+            <p:dialog header="Edição" widgetVar="dlg"
+                      resizable="false" modal="true" width="600">
+                <h:form id="formEdicao">
+                    <p:growl/>
+                    <div align="center">
+                        <p:panelGrid columns="2">
+                            <f:facet name="footer">
+                                <div align="center">
+                                    <p:commandButton
+                                        actionListener="#{controleMarca.salvar()}"
+                                        oncomplete="if(!args.validationFailed){PF('dlg').hide();}"
+                                        update=":formListagem :formEdicao"
+                                        value="Salvar"/>
+                                </div>
+                            </f:facet>
+                            <p:outputLabel value="ID"/>
+                        <p:inputText value="#{controleMarca.objeto.id}"
+                                     readonly="true" size="5"/>
+                        <p:outputLabel value="Nome"/>
+                        <p:inputText value="#{controleMarca.objeto.nome}"
+                                     placeholder="Obrigatório"
+                                     size="50" maxlength="50" id="txtNome"/>
+                        </p:panelGrid>
+                    </div>
+                </h:form>
+            </p:dialog>
+        </ui:define>
+    </ui:composition>
+</html>
+
