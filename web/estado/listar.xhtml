@@ -92,30 +92,33 @@
                       resizable="false" modal="true" width="600">
                 <h:form id="formEdicao">
                     <p:growl/>
-                    <p:panelGrid columns="2">
-                        <f:facet name="footer">
-                            <div align="center">
-                                <p:commandButton
-                                    actionListener="#{controleEstado.salvar()}"
-                                    oncomplete="if(!args.validationFailed){PF('dlg').hide();}"
-                                    update=":formListagem :formEdicao"
-                                    value="Salvar"/>
-                            </div>
-                        </f:facet>
+                    <div align="center">
+                        <p:panelGrid columns="2">
+                            <f:facet name="footer">
+                                <div align="center">
+                                    <p:commandButton
+                                        actionListener="#{controleEstado.salvar()}"
+                                        oncomplete="if(!args.validationFailed){PF('dlg').hide();}"
+                                        update=":formListagem :formEdicao"
+                                        value="Salvar"/>
+                                </div>
+                            </f:facet>
 
-                        <p:outputLabel value="ID"/>
-                        <p:inputText value="#{controleEstado.objeto.id}"
-                                     readonly="true" size="5"/>
+                            <p:outputLabel value="ID"/>
+                            <p:inputText value="#{controleEstado.objeto.id}"
+                                         readonly="true" size="5"/>
 
-                        <p:outputLabel value="Nome" for="nome"/>
-                        <p:inputText value="#{controleEstado.objeto.nome}"
-                                     id="nome" readonly="false" size="5"/>
+                            <p:outputLabel value="Nome" for="nome"/>
+                            <p:inputText value="#{controleEstado.objeto.nome}"
+                                         id="nome" size="60"
+                                         placeholder="Obrigatório"/>
 
-                        <p:outputLabel value="UF" for="uf" />
-                        <p:inputText value="#{controleEstado.objeto.uf}"
-                                     id="uf" size="2" />
+                            <p:outputLabel value="UF" for="uf" />
+                            <p:inputText value="#{controleEstado.objeto.uf}"
+                                         id="uf" size="2" />
 
-                    </p:panelGrid>
+                        </p:panelGrid>
+                    </div>
                 </h:form>
             </p:dialog>
         </ui:define>
