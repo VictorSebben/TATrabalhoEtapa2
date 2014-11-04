@@ -12,10 +12,6 @@ import javax.persistence.Table;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
-/**
- *
- * @author victor
- */
 @Entity
 @Table(name = "estado")
 public class Estado implements Serializable {
@@ -37,8 +33,6 @@ public class Estado implements Serializable {
     @NotEmpty(message = "UF deve ser informado!")
     @Column(name = "uf", nullable = false, length = 50)
     private String uf;
-
-
 
 
     public Estado() {}
