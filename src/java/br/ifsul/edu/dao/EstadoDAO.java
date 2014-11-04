@@ -16,7 +16,7 @@ public class EstadoDAO<T> extends  GenericDAO<Estado>implements Serializable {
         super.getListOrder().add(
                     new Order("id", "ID", "="));
         super.getListOrder().add(
-                    new Order("estado.nome", "Estado", "like"));
+                    new Order("nome", "Estado", "like"));
         // definindo a order inicial
         super.setCurrentOrder((Order) super.getListOrder().get(1));
         // inicializar o filtro
