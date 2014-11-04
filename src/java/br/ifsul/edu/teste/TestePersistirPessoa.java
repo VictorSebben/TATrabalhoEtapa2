@@ -2,8 +2,6 @@ package br.ifsul.edu.teste;
 
 import br.ifsul.edu.modelo.Pessoa;
 import br.ifsul.edu.modelo.Telefone;
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
