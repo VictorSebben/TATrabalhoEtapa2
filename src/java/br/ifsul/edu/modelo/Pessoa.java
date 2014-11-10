@@ -1,14 +1,22 @@
 package br.ifsul.edu.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -61,9 +69,27 @@ public class Pessoa implements Serializable {
     
     @Column(name = "complemento", nullable = true, length = 50)
     private String complemento;
-
+    
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL,
+            orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Telefone> telefones = new ArrayList<>();
+    
     public Pessoa() {
+        telefones = new ArrayList<>();
     }
+    
+    
+    public void adicionarTelefone(Telefone obj){
+        obj.setPessoa(this);
+        this.getTelefones().add(obj);
+    }
+    
+    public void removerTelefone(Telefone obj){
+        if (this.getTelefones().contains(obj)){
+            this.getTelefones().remove(obj);
+        }
+    }
+    
     
     /**
      * @return the id
@@ -156,6 +182,8 @@ public class Pessoa implements Serializable {
         return complemento;
     }
 
+    
+    
     /**
      * @param complemento the complemento to set
      */
@@ -166,7 +194,7 @@ public class Pessoa implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.getId());
         return hash;
     }
 
@@ -184,4 +212,18 @@ public class Pessoa implements Serializable {
         }
         return true;
     }    
+
+    /**
+     * @return the telefones
+     */
+    public List<Telefone> getTelefones() {
+        return telefones;
+    }
+
+    /**
+     * @param telefones the telefones to set
+     */
+    public void setTelefones(List<Telefone> telefones) {
+        this.telefones = telefones;
+    }
 }
