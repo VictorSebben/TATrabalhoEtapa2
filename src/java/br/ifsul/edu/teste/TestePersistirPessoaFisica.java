@@ -1,5 +1,7 @@
 package br.ifsul.edu.teste;
 
+import br.ifsul.edu.modelo.Cidade;
+import br.ifsul.edu.modelo.Estado;
 import br.ifsul.edu.modelo.PessoaFisica;
 import br.ifsul.edu.modelo.Telefone;
 import javax.persistence.EntityManager;
@@ -24,10 +26,22 @@ public class TestePersistirPessoaFisica {
         tel2.setNumero("(54) 2345-6789");
         obj.adicionarTelefone(tel2);
         
+        Estado estado = new Estado();
+        estado.setNome("Rio Grande do Sul");
+        estado.setUf("RS");
+        
+        Cidade cidade = new Cidade();
+        cidade.setNome("Passo Fundo");
+        cidade.setEstado(estado);
+        
+        obj.setCidade(cidade);
+        
         EntityManagerFactory emf =
                 Persistence.createEntityManagerFactory("TATrab2PULocal");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
+        em.persist(estado);
+        em.persist(cidade);
         em.persist(obj);
         em.getTransaction().commit();
         em.close();
