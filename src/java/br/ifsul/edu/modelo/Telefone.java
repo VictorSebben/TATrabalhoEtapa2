@@ -42,7 +42,7 @@ public class Telefone implements Serializable {
     private String descricao;
 
     @ManyToOne
-    @JoinColumn(name = "pessoa", referencedColumnName = "id", nullable = false)    
+    @JoinColumn(name = "pessoa", referencedColumnName = "id", nullable = true)    
     private Pessoa pessoa;
     
     
