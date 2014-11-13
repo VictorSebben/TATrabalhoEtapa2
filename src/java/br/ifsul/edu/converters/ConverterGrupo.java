@@ -23,7 +23,7 @@ public class ConverterGrupo implements Serializable, Converter {
         if (string == null){
             return null;
         }
-        return em.find(Estado.class, Integer.parseInt(string));
+        return em.find(Grupo.class, Integer.parseInt(string));
     }
     // converte do objeto para a tela
     @Override

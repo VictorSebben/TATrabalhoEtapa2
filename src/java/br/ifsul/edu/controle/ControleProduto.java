@@ -1,8 +1,9 @@
 package br.ifsul.edu.controle;
 
+import br.ifsul.edu.dao.GrupoDAO;
 import br.ifsul.edu.dao.ProdutoDAO;
+import br.ifsul.edu.modelo.Grupo;
 import br.ifsul.edu.modelo.Produto;
-import br.ifsul.edu.modelo.Venda;
 import br.ifsul.edu.util.Util;
 import java.io.Serializable;
 import javax.ejb.EJB;
@@ -13,8 +14,11 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class ControleProduto implements Serializable {
     @EJB
-    private ProdutoDAO<Venda> dao;
+    private ProdutoDAO<Produto> dao;
     private Produto objeto;
+    private Grupo grupo;
+    @EJB
+    private GrupoDAO grupoDao;
 
     public ControleProduto() {}
 
@@ -60,14 +64,14 @@ public class ControleProduto implements Serializable {
     /**
      * @return the dao
      */
-    public ProdutoDAO<Venda> getDao() {
+    public ProdutoDAO<Produto> getDao() {
         return dao;
     }
 
     /**
      * @param dao the dao to set
      */
-    public void setDao(ProdutoDAO<Venda> dao) {
+    public void setDao(ProdutoDAO<Produto> dao) {
         this.dao = dao;
     }
 
@@ -84,6 +88,23 @@ public class ControleProduto implements Serializable {
     public void setObjeto(Produto objeto) {
         this.objeto = objeto;
     }
+
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
+    }
+
+    public GrupoDAO getGrupoDao() {
+        return grupoDao;
+    }
+
+    public void setGrupoDao(GrupoDAO grupoDao) {
+        this.grupoDao = grupoDao;
+    }
+
 
 
 

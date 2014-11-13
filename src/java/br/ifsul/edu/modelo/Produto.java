@@ -7,7 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -48,6 +50,12 @@ public class Produto implements Serializable {
     @Column(name = "estoque", nullable = false)
     @NotNull(message = "Estoque deve ser informado")
     private Integer estoque;
+
+    @ManyToOne
+    @JoinColumn(name = "grupo", referencedColumnName = "id", nullable = false)
+    @NotNull(message = "O grupo deve ser informado")
+    private Grupo grupo;
+
 
     public Produto() {}
 
@@ -119,6 +127,14 @@ public class Produto implements Serializable {
      */
     public void setEstoque(Integer estoque) {
         this.estoque = estoque;
+    }
+
+    public Grupo getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(Grupo grupo) {
+        this.grupo = grupo;
     }
 
     @Override

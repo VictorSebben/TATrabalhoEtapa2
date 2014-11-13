@@ -139,6 +139,13 @@
                                          onkeyup="Mascara(this, Integer);"
                                          onkeypress="Mascara(this, Integer);"/>
 
+                            <p:outputLabel value="Grupo" for="grupo" />
+                            <p:selectOneMenu id="grupo" value="#{controleProduto.objeto.grupo}">
+                                <f:converter converterId="converterGrupo"/>
+                                <f:selectItems value="#{controleProduto.grupoDao.listAll}"
+                                               var="g" itemLabel="#{g.nome}"/>
+                            </p:selectOneMenu>
+
                         </p:panelGrid>
                     </div>
                 </h:form>

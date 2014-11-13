@@ -106,12 +106,15 @@
                                 </div>
                             </f:facet>
                             <p:outputLabel value="ID"/>
-                        <p:inputText value="#{controleGrupo.objeto.id}"
-                                     readonly="true" size="5"/>
-                        <p:outputLabel value="Nome"/>
-                        <p:inputText value="#{controleGrupo.objeto.nome}"
-                                     placeholder="Obrigatório"
-                                     size="50" maxlength="50" id="txtNome"/>
+                            <p:inputText value="#{controleGrupo.objeto.id}"
+                                         readonly="true" size="5"/>
+                            <p:outputLabel value="Nome"/>
+
+                            <p:inputText value="#{controleGrupo.objeto.nome}"
+                                         placeholder="Obrigatório"
+                                         size="50" maxlength="50" id="txtNome"/>
+                            <p:outputLabel value="Estado" />
+
                         </p:panelGrid>
                     </div>
                 </h:form>
