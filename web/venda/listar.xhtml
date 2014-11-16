@@ -153,18 +153,18 @@
                                                  onkeydown="Mascara(this, Valor);"
                                                  onkeyup="Mascara(this, Valor);"
                                                  onkeypress="Mascara(this, Valor);"/>
-                                    <p:outputLabel value="Valor Total" for="valorTotal"/>
-                                    <p:inputText id="valorTotal" value="#{controleVenda.valorTotal}"
-                                                 size="14" maxlength="14" placeholder="Obrigatório"
-                                                 onkeydown="Mascara(this, Valor);"
-                                                 onkeyup="Mascara(this, Valor);"
-                                                 onkeypress="Mascara(this, Valor);"/>
+                                    <p:outputLabel value="Produto" for="produto" />
+                                    <p:selectOneMenu id="produto" value="#{controleVenda.produto}">
+                                        <f:converter converterId="converterProduto"/>
+                                        <f:selectItems value="#{controleVenda.produtoDAO.listAll}"
+                                                       var="p" itemLabel="#{p.nome}"/>
+                                    </p:selectOneMenu>
                                     <f:facet name="footer">
                                         <p:commandButton value="Adicionar Item de Venda"
                                                          id="btnAdicionar"
                                                          actionListener="#{controleVenda.adicionarVendaItem()}"
                                                          update="painelVendaItens listaVendaItens"
-                                                         process="quantidade valorUnit valorTotal btnAdicionar"/>
+                                                         process="quantidade valorUnit btnAdicionar"/>
                                     </f:facet>
                                 </p:panelGrid>
                                 <p:dataTable id="listaVendaItens"

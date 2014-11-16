@@ -48,6 +48,11 @@ public class VendaItens implements Serializable {
     @NotNull(message = "Venda deve ser informada")
     private Venda venda;
 
+    @ManyToOne
+    @JoinColumn(name = "produto", referencedColumnName = "id", nullable = false)
+    @NotNull(message = "Produto deve ser informado")
+    private Produto produto;
+
     /**
      * @return the id
      */
@@ -143,6 +148,20 @@ public class VendaItens implements Serializable {
     @Override
     public String toString() {
         return "VendaItens{" + "id=" + id + ", quantidade=" + quantidade + ", valorUnitario=" + valorUnitario + ", valorTotal=" + valorTotal + ", venda=" + venda + '}';
+    }
+
+    /**
+     * @return the produto
+     */
+    public Produto getProduto() {
+        return produto;
+    }
+
+    /**
+     * @param produto the produto to set
+     */
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
 }

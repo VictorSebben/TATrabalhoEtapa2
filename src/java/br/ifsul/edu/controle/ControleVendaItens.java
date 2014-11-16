@@ -1,7 +1,9 @@
 package br.ifsul.edu.controle;
 
+import br.ifsul.edu.dao.ProdutoDAO;
 import br.ifsul.edu.dao.VendaDAO;
 import br.ifsul.edu.dao.VendaItensDAO;
+import br.ifsul.edu.modelo.Produto;
 import br.ifsul.edu.modelo.Venda;
 import br.ifsul.edu.modelo.VendaItens;
 import br.ifsul.edu.util.Util;
@@ -21,9 +23,12 @@ public class ControleVendaItens implements Serializable {
     private VendaItensDAO<VendaItens> dao;
     @EJB
     private VendaDAO vendaDAO;
+    @EJB
+    private ProdutoDAO produtoDAO;
 
     private VendaItens objeto;
     private Venda venda;
+    private Produto produto;
 
     public ControleVendaItens() {}
 
@@ -120,6 +125,34 @@ public class ControleVendaItens implements Serializable {
      */
     public void setVenda(Venda venda) {
         this.venda = venda;
+    }
+
+    /**
+     * @return the produtoDAO
+     */
+    public ProdutoDAO getProdutoDAO() {
+        return produtoDAO;
+    }
+
+    /**
+     * @param produtoDAO the produtoDAO to set
+     */
+    public void setProdutoDAO(ProdutoDAO produtoDAO) {
+        this.produtoDAO = produtoDAO;
+    }
+
+    /**
+     * @return the produto
+     */
+    public Produto getProduto() {
+        return produto;
+    }
+
+    /**
+     * @param produto the produto to set
+     */
+    public void setProduto(Produto produto) {
+        this.produto = produto;
     }
 
 
