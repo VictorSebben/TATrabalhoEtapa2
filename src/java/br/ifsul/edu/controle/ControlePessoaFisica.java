@@ -24,7 +24,7 @@ public class ControlePessoaFisica implements Serializable {
     @EJB
     private PessoaFisicaDAO<PessoaFisica> dao;
     private PessoaFisica objeto;
-    private Telefone telefone;
+    //private Telefone telefone;
 
     @EJB
     private CidadeDAO cidadeDao;
@@ -81,8 +81,8 @@ public class ControlePessoaFisica implements Serializable {
     }
 
     public void editar(Integer id) {
+        Util.mensagemInformacao("Sucesso ao recuperar objeto");
         try {
-            Util.mensagemInformacao("Sucesso ao recuperar objeto");
             setObjeto(getDao().getObjectById(id));
         } catch (Exception e) {
             Util.mensagemErro("Erro ao recuperar objeto: " + e.getMessage());
@@ -123,13 +123,13 @@ public class ControlePessoaFisica implements Serializable {
         this.telefoneDao = telefoneDao;
     }
 
-    public Telefone getTelefone() {
+    /*public Telefone getTelefone() {
         return telefone;
     }
 
     public void setTelefone(Telefone telefone) {
         this.telefone = telefone;
-    }
+    }*/
 
     /**
      * @return the cidadeDao

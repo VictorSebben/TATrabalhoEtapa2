@@ -29,7 +29,7 @@ public class PessoaFisicaDAO<T> extends  GenericDAO<PessoaFisica>implements Seri
     @Override
     public PessoaFisica getObjectById(Integer id) {
         PessoaFisica obj = super.getEm().find(PessoaFisica.class, id);
-        //obj.getDisciplinas().size();
+        obj.getTelefones().size();
         return obj;
     }
 }

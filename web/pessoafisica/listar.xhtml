@@ -162,39 +162,38 @@
                                 </p:panelGrid>    
                             </div>
                         </p:tab>        
+                      
                         <p:tab title="Telefones">
                             <div align="center">
                                 <p:panelGrid columns="2" id="painelTelefones">
                                     <p:outputLabel value="Descrição" for="descricao"/>
-                                    <p:inputText value="#{controlePessoaFisica.telefone.descricao}"
+                                    <p:inputText value=""
                                                  id="descricao" size="20"/>
                                     
                                     <p:outputLabel value="Número" for="numero"/>
-                                    <p:inputText value="#{controlePessoaFisica.telefone.numero}"
+                                    <p:inputText value=""
                                                  id="numero" size="20"/>
                                     
                                     <f:facet name="footer">
                                         <p:commandButton value="Adicionar telefone"
                                                          id="btnAdicionar"
                                                          actionListener="#{controlePessoaFisica.adicionarTelefone()}"
-                                                         update="painelTelefones "
+                                                         update="painelTelefones"
                                                          process="descricao numero btnAdicionar"/>
                                     </f:facet>
-                                    
                                 </p:panelGrid>
-                                
                                 <p:dataTable id="listaTelefones"
                                              value="#{controlePessoaFisica.objeto.telefones}"
-                                             var="telefone">
+                                             var="t">
                                     <p:column headerText="Descrição">
-                                        <p:outputLabel value="#{telefone.descricao}"/>
+                                        <p:outputLabel value="#{t.descricao}"/>
                                     </p:column>
                                     <p:column headerText="Número">
-                                        <p:outputLabel value="#{telefone.numero}"/>
+                                        <p:outputLabel value="#{t.numero}"/>
                                     </p:column>
                                     <p:column>
                                         <p:commandLink value="Remover"
-                                                       actionListener="#{controlePessoaFisica.removerTelefone(telefone.id)}"
+                                                       actionListener="#{controlePessoaFisica.removerTelefone(t)}"
                                                        update="listaTelefones"/>
                                     </p:column>
 
@@ -202,7 +201,7 @@
                                 
                             </div>
                         </p:tab>
-                       
+                      
                     </p:tabView>
                 </h:form>
             </p:dialog>

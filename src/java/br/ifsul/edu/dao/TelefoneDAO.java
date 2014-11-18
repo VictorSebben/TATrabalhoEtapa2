@@ -17,7 +17,7 @@ public class TelefoneDAO<T> extends  GenericDAO<Telefone>implements Serializable
         super.getListOrder().add(
                     new Order("id", "ID", "="));
         super.getListOrder().add(
-                    new Order("numero", "Telefone", "like"));
+                    new Order("numero", "Numero", "like"));
         // definindo a order inicial
         super.setCurrentOrder((Order) super.getListOrder().get(1));
         // inicializar o filtro
@@ -30,6 +30,7 @@ public class TelefoneDAO<T> extends  GenericDAO<Telefone>implements Serializable
     public Telefone getObjectById(Integer id) {
         Telefone obj = super.getEm().find(Telefone.class, id);
         //obj.getDisciplinas().size();
+        
         return obj;
     }
 }
