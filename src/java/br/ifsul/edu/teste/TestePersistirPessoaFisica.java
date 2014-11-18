@@ -18,6 +18,9 @@ public class TestePersistirPessoaFisica {
         obj.setCep("01234-567");
         obj.setComplemento("");
         
+        obj.setCpf("123123123");
+        obj.setRg("123123123");
+        
         Telefone tel1 = new Telefone();
         tel1.setNumero("(54) 9876-5432");
         obj.adicionarTelefone(tel1);

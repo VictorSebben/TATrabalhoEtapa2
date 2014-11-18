@@ -79,7 +79,7 @@ public class Pessoa implements Serializable {
     private List<Telefone> telefones = new ArrayList<>();
     
     @ManyToOne
-    @JoinColumn(name = "cidade", referencedColumnName = "id", nullable = false)    
+    @JoinColumn(name = "cidade", referencedColumnName = "id", nullable = true)    
     private Cidade cidade;
     
     public Pessoa() {
