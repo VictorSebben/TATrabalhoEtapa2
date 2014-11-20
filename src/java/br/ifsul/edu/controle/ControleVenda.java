@@ -1,5 +1,6 @@
 package br.ifsul.edu.controle;
 
+import br.ifsul.edu.dao.PessoaFisicaDAO;
 import br.ifsul.edu.dao.ProdutoDAO;
 import br.ifsul.edu.dao.VendaDAO;
 import br.ifsul.edu.dao.VendaItensDAO;
@@ -29,6 +30,8 @@ public class ControleVenda implements Serializable {
     private VendaItensDAO vendaItensDAO;
     @EJB
     private ProdutoDAO produtoDAO;
+    @EJB
+    private PessoaFisicaDAO pessoaFisicaDAO;
 
     private Double quantidade;
     private Double valorUnitario;
@@ -218,6 +221,20 @@ public class ControleVenda implements Serializable {
      */
     public void setProdutoDAO(ProdutoDAO produtoDAO) {
         this.produtoDAO = produtoDAO;
+    }
+
+    /**
+     * @return the pessoaFisicaDAO
+     */
+    public PessoaFisicaDAO getPessoaFisicaDAO() {
+        return pessoaFisicaDAO;
+    }
+
+    /**
+     * @param pessoaFisicaDAO the pessoaFisicaDAO to set
+     */
+    public void setPessoaFisicaDAO(PessoaFisicaDAO pessoaFisicaDAO) {
+        this.pessoaFisicaDAO = pessoaFisicaDAO;
     }
 
 }

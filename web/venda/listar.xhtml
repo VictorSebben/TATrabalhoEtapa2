@@ -75,6 +75,9 @@
                     <p:column headerText="Status">
                         <p:outputLabel value="#{obj.getStatusString()}" />
                     </p:column>
+                    <p:column headerText="Pessoa Física">
+                        <p:outputLabel value="#{obj.pessoaFisica.nome}" />
+                    </p:column>
                     <p:column headerText="Ações">
                         <div align="center">
                             <p:commandButton
@@ -138,6 +141,12 @@
                                         <f:selectItem itemLabel="Em aberto" itemValue="A"/>
                                         <f:selectItem itemLabel="Finalizada" itemValue="F"/>
                                     </p:selectOneRadio>
+                                    <p:outputLabel value="Pessoa" for="pessoa-fisica"/>
+                                    <p:selectOneMenu id="pessoa-fisica" value="#{controleVenda.objeto.pessoaFisica}">
+                                        <f:converter converterId="converterPessoaFisica"/>
+                                        <f:selectItems value="#{controleVenda.pessoaFisicaDAO.listAll}"
+                                                       var="pf" itemLabel="#{pf.nome}"/>
+                                    </p:selectOneMenu>
                                 </p:panelGrid>
                             </div>
                         </p:tab>

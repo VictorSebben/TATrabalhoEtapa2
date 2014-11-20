@@ -12,6 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -52,6 +54,11 @@ public class Venda implements Serializable {
     @OneToMany(mappedBy = "venda", cascade = CascadeType.ALL,
             orphanRemoval = true, fetch = FetchType.LAZY)
     private List<VendaItens> vendaItens = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "pessoa_fisica", referencedColumnName = "id", nullable = false)
+    @NotNull(message = "A pessoa deve ser informada!")
+    private PessoaFisica pessoaFisica;
 
     public Venda() {}
 
@@ -165,6 +172,20 @@ public class Venda implements Serializable {
      */
     public void setVendaItens(List<VendaItens> vendaItens) {
         this.vendaItens = vendaItens;
+    }
+
+    /**
+     * @return the pessoaFisica
+     */
+    public PessoaFisica getPessoaFisica() {
+        return pessoaFisica;
+    }
+
+    /**
+     * @param pessoaFisica the pessoaFisica to set
+     */
+    public void setPessoaFisica(PessoaFisica pessoaFisica) {
+        this.pessoaFisica = pessoaFisica;
     }
 
 }
