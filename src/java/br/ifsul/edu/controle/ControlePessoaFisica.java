@@ -32,24 +32,39 @@ public class ControlePessoaFisica implements Serializable {
     @EJB
     private TelefoneDAO telefoneDao;
     
+    private String telefoneDescricao;
+    private String telefoneNumero;
+
+    public String getTelefoneDescricao() {
+        return telefoneDescricao;
+    }
+
+    public void setTelefoneDescricao(String telefoneDescricao) {
+        this.telefoneDescricao = telefoneDescricao;
+    }
+
+    public String getTelefoneNumero() {
+        return telefoneNumero;
+    }
+
+    public void setTelefoneNumero(String telefoneNumero) {
+        this.telefoneNumero = telefoneNumero;
+    }
     
-
-
+    
+   
     public ControlePessoaFisica() {
 
     }
 
     public void adicionarTelefone(){
         Telefone telefone = new Telefone();
-        //vi.setQuantidade(getQuantidade());
-        //vi.setValorUnitario(getValorUnitario());
-        //vi.setValorTotal(getValorUnitario() * getQuantidade());
-        //vi.setVenda(getObjeto());
-        //vi.setProduto(getProduto());
-        //getObjeto().adicionarVendaItem(vi);
-        //setQuantidade(null);
-        //setValorUnitario(null);
-        //setValorTotal(null);
+        telefone.setPessoa(objeto);
+        telefone.setDescricao(telefoneDescricao);
+        telefone.setNumero(telefoneNumero);
+        getObjeto().adicionarTelefone(telefone);
+        setTelefoneDescricao(null);
+        setTelefoneNumero(null);
         Util.mensagemInformacao("Telefone adicionado com sucesso");
     }
 

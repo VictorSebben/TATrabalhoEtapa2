@@ -84,7 +84,7 @@
                             <p:commandButton
                                 actionListener="#{controlePessoaFisica.remover(obj.id)}"
                                 update=":formListagem"
-                                onclick="if (!confirm('Confirma a exclusão da venda #{obj.id}?'))
+                                onclick="if (!confirm('Confirma a exclusão da pessoa #{obj.id}?'))
                                             return false"
                                 icon="ui-icon-trash"
                                 id="btnExcluir"/>
@@ -162,23 +162,23 @@
                                 </p:panelGrid>    
                             </div>
                         </p:tab>        
-                      
+                        
                         <p:tab title="Telefones">
                             <div align="center">
                                 <p:panelGrid columns="2" id="painelTelefones">
                                     <p:outputLabel value="Descrição" for="descricao"/>
-                                    <p:inputText value=""
+                                    <p:inputText value="#{controlePessoaFisica.telefoneDescricao}"
                                                  id="descricao" size="20"/>
                                     
                                     <p:outputLabel value="Número" for="numero"/>
-                                    <p:inputText value=""
+                                    <p:inputText value="#{controlePessoaFisica.telefoneNumero}"
                                                  id="numero" size="20"/>
                                     
                                     <f:facet name="footer">
                                         <p:commandButton value="Adicionar telefone"
                                                          id="btnAdicionar"
                                                          actionListener="#{controlePessoaFisica.adicionarTelefone()}"
-                                                         update="painelTelefones"
+                                                         update="painelTelefones listaTelefones"
                                                          process="descricao numero btnAdicionar"/>
                                     </f:facet>
                                 </p:panelGrid>
@@ -201,7 +201,7 @@
                                 
                             </div>
                         </p:tab>
-                      
+                    
                     </p:tabView>
                 </h:form>
             </p:dialog>

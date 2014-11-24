@@ -2,6 +2,7 @@
 package br.ifsul.edu.controle;
 
 import br.ifsul.edu.dao.TelefoneDAO;
+import br.ifsul.edu.modelo.Pessoa;
 import br.ifsul.edu.modelo.Telefone;
 import br.ifsul.edu.util.Util;
 import java.io.Serializable;
@@ -16,6 +17,16 @@ public class ControleTelefone implements Serializable {
     @EJB
     private TelefoneDAO<Telefone> dao;
     private Telefone objeto;
+    private Pessoa pessoa;
+
+    
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
 
     public ControleTelefone() {
 
