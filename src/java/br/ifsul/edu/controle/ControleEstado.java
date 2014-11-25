@@ -56,7 +56,12 @@ public class ControleEstado implements Serializable {
             dao.remove(objeto);
             Util.mensagemInformacao("Objeto removido com sucesso");
         } catch (Exception e) {
-            Util.mensagemErro("Erro ao remover objeto: " + e.getMessage());
+            if (e.getMessage().contains("aborted")) {
+                Util.mensagemErro("O estado é referenciado por uma ou mais cidades.");
+            }
+            else {
+                Util.mensagemErro("Erro ao remover objeto: " + e.getMessage());
+            }
         }
     }
 
